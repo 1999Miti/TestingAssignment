@@ -14,9 +14,9 @@ namespace TestingAssignment.Services
         {
             _passengerlist = new List<Passenger>()
             {
-                new Passenger(){Id=1,FirstName="Miti",LastName="Nayak",PhoneNumber="12345678910"},
-                new Passenger(){Id=2,FirstName="Jahnavi",LastName="Shah",PhoneNumber="324567891"},
-                new Passenger(){Id=3,FirstName="Riya",LastName="Patel",PhoneNumber="4563782900"}
+                new Passenger(){Id=1,FirstName="Test",LastName="Test",PhoneNumber="12345678910"},
+                new Passenger(){Id=2,FirstName="Test 1",LastName="Test1",PhoneNumber="4889516548"},
+                new Passenger(){Id=3,FirstName="test 2",LastName="test2",PhoneNumber="84891561548"}
         };
         }
 
@@ -25,11 +25,11 @@ namespace TestingAssignment.Services
                return _passengerlist;
         }
 
-        public Passenger AddPassenger(Passenger newPassenger)
+        public Passenger AddPassenger(Passenger model)
         {
-            newPassenger.Id = newPassenger.Id;
-            _passengerlist.Add(newPassenger);
-            return newPassenger;
+            model.Id = model.Id;
+            _passengerlist.Add(model);
+            return model;
 
         }
 

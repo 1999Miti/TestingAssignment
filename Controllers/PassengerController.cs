@@ -12,18 +12,18 @@ namespace TestingAssignment.Controllers
     [ApiController]
     public class PassengerController : ControllerBase
     {
-        private readonly IPassenger _service;
+        private readonly IPassenger _passenger;
 
-        public PassengerController(IPassenger service)
+        public PassengerController(IPassenger passenger)
         {
-            _service = service;
+            _passenger = passenger;
         }
 
         //GET api/Passenger
         [HttpGet]
         public ActionResult<IEnumerable<Passenger>> Get()
         {
-            var passengers = _service.GetAllPassengers();
+            var passengers = _passenger.GetAllPassengers();
             return Ok(passengers);
         }
 
@@ -31,7 +31,7 @@ namespace TestingAssignment.Controllers
         [HttpGet("{id}")]
         public ActionResult<Passenger> Get(int id)
         {
-            var passengers = _service.GetPassengerById(id);
+            var passengers = _passenger.GetPassengerById(id);
             if(passengers == null)
             {
                 return NotFound();
@@ -48,7 +48,7 @@ namespace TestingAssignment.Controllers
                 return BadRequest(ModelState);
             }
 
-            var passengers = _service.AddPassenger(value);
+            var passengers = _passenger.AddPassenger(value);
             return CreatedAtAction("Get", new { id = passengers.Id }, passengers);
         }
 
@@ -56,12 +56,12 @@ namespace TestingAssignment.Controllers
         [HttpDelete("{id}")]
         public ActionResult RemovePassenger(int id)
         {
-            var existingPassenger = _service.GetPassengerById(id);
+            var existingPassenger = _passenger.GetPassengerById(id);
             if (existingPassenger == null)
             {
                 return NotFound();
             }
-            _service.RemovePassenger(id);
+            _passenger.RemovePassenger(id);
             return Ok();
         }
     }
